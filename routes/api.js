@@ -12,4 +12,4 @@ router.get('/api/workouts', (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = router; 
