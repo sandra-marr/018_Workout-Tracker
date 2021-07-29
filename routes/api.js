@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const db = require('../models');
+const Workout = require('../models/workout.js');
 
 
 //getLastWorkout() from api.js
 //called when the homepage is loaded
 router.get('/api/workouts', (req, res) => {
-    db.Workout.find({})
+    Workout.find({})
     .then(dbWorkout => {
         res.json(dbWorkout);
         console.log(dbWorkout);
@@ -18,7 +18,7 @@ router.get('/api/workouts', (req, res) => {
 //addExercise(data) from api.js
 //called on exercise.js in the form submission
 router.put('api/workouts/:id', (req, res) => {
-    db.Workout.updateOne(
+    Workout.updateOne(
         {
             id: mongojs.ObjectId(req.params.id)
         }, 
@@ -34,7 +34,7 @@ router.put('api/workouts/:id', (req, res) => {
 //createWorkout(data = {}) from api.js
 //called on exercise.js file under initExercise();
 router.post('/api/workouts', (req, res) => {
-    db.Workout.insert({})
+    Workout.create(req.body)
     .then(dbWorkout => {
         res.json(dbWorkout);
         console.log(dbWorkout);
@@ -46,7 +46,7 @@ router.post('/api/workouts', (req, res) => {
 
 //getWorkoutsInRange() from api.js
 router.get('/api/workouts/range', (req, res) => {
-    db.Workout.find({})
+    Workout.find({})
     .then(dbWorkout => {
         res.json(dbWorkout);
         console.log(dbWorkout);
