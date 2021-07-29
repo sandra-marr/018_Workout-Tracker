@@ -17,15 +17,32 @@ router.get('/api/workouts', (req, res) => {
 
 //addExercise(data) from api.js
 //called on exercise.js in the form submission
-router.put('api/workouts/:id', (req, res) => {
+router.put('/api/workouts/:id', (req, res) => {
+
+    console.log(req);
     Workout.updateOne(
         {
-            id: mongojs.ObjectId(req.params.id)
-        }, 
+            _id: req.params.id
+        },
+        {
+            $push: { exercises: 
+                {
+                type: req.body.type,
+                name: req.body.name,
+                duration: req.body.duration,
+                weight: req.body.weight,
+                reps: req.body.reps,
+                sets: req.body.sets,
+                distance: req.body.distance,
+                }
+            }
+          },
         (err, data) => {
+            console.log(data);
         if (err) {
           console.log(err);
         } else {
+        console.log(data);
           res.json(data);
         }
       })
