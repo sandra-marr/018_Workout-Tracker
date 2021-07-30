@@ -5,7 +5,6 @@ const Workout = require('../models/workout.js');
 //getLastWorkout() from api.js
 //called when the homepage is loaded
 router.get('/api/workouts', (req, res) => {
-    Workout.find({})
     Workout.aggregate([
         {
             $addFields: {
@@ -72,7 +71,6 @@ router.post('/api/workouts', (req, res) => {
 
 //getWorkoutsInRange() from api.js
 router.get('/api/workouts/range', (req, res) => {
-    Workout.find({}, )
     Workout.aggregate([
         {
             $addFields: {
@@ -82,6 +80,7 @@ router.get('/api/workouts/range', (req, res) => {
             },
           },
     ])
+   .sort({day: -1}).limit(7).sort({day: 1})
     .then(dbWorkout => {
         res.json(dbWorkout);
         console.log(dbWorkout);
