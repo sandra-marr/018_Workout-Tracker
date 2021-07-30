@@ -5,11 +5,12 @@
 ## Table of Contents
 * [Description](#description)
 * [Lessons Learned](#lessons-learned)
-* [Tools](#tools)
 * [Credits](#credits)
+* [Tools](#tools)
 * [How to Contribute](#how-to-contribute)
 * [License](#license)
 * [Questions](#questions)
+
 ## Description 
 This application is a fitness tracker. It allows users to start or continue a workout and enter different exercises for that workout. It also allows users to review stats on the last 7 workouts completed. 
 This can help users track their progress on the go.
@@ -18,6 +19,11 @@ This can help users track their progress on the go.
 In buidling this application I became more familiar with mongoDB and mongoose. Specifically creating models, queries, and aggregating data. 
 ### Demo
   ![Demo](./public/images/018_Fitness-Tracker.gif)
+
+### Deployed Link
+
+https://fitness-tracker-018.herokuapp.com/
+
 ## Credits
 Front-End code was provided by UW Bootcamp.
 ## Tools
