@@ -16,7 +16,6 @@ router.get('/api/workouts', (req, res) => {
     ])
     .then(dbWorkout => {
         res.json(dbWorkout);
-        console.log(dbWorkout);
     })
     .catch((err) => {
         res.json(err);
@@ -26,8 +25,6 @@ router.get('/api/workouts', (req, res) => {
 //addExercise(data) from api.js
 //called on exercise.js in the form submission
 router.put('/api/workouts/:id', (req, res) => {
-
-    console.log(req);
     Workout.updateOne(
         {
             _id: req.params.id
@@ -46,11 +43,9 @@ router.put('/api/workouts/:id', (req, res) => {
             }
           },
         (err, data) => {
-            console.log(data);
         if (err) {
           console.log(err);
         } else {
-        console.log(data);
           res.json(data);
         }
       })
@@ -62,7 +57,6 @@ router.post('/api/workouts', (req, res) => {
     Workout.create(req.body)
     .then(dbWorkout => {
         res.json(dbWorkout);
-        console.log(dbWorkout);
     })
     .catch((err) => {
         res.json(err);
@@ -83,10 +77,8 @@ router.get('/api/workouts/range', (req, res) => {
    .sort({day: -1}).limit(7).sort({day: 1})
     .then(dbWorkout => {
         res.json(dbWorkout);
-        console.log(dbWorkout);
     })
     .catch((err) => {
-        console.log(err)
         res.json(err);
     });
 });
