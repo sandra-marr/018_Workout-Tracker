@@ -6,6 +6,15 @@ const Workout = require('../models/workout.js');
 //called when the homepage is loaded
 router.get('/api/workouts', (req, res) => {
     Workout.find({})
+    Workout.aggregate([
+        {
+            $addFields: {
+              totalDuration: {
+                $sum: '$exercises.duration',
+              },
+            },
+          },
+    ])
     .then(dbWorkout => {
         res.json(dbWorkout);
         console.log(dbWorkout);
@@ -63,12 +72,22 @@ router.post('/api/workouts', (req, res) => {
 
 //getWorkoutsInRange() from api.js
 router.get('/api/workouts/range', (req, res) => {
-    Workout.find({})
+    Workout.find({}, )
+    Workout.aggregate([
+        {
+            $addFields: {
+              totalDuration: {
+                $sum: '$exercises.duration',
+              },
+            },
+          },
+    ])
     .then(dbWorkout => {
         res.json(dbWorkout);
         console.log(dbWorkout);
     })
     .catch((err) => {
+        console.log(err)
         res.json(err);
     });
 });
